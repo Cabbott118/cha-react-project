@@ -3,20 +3,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 // Components
-import AddData from '../components/AddData';
-import Table from '../components/Table';
+import DataTable from '../components/DataTable';
 
 const useStyles = makeStyles((theme) => ({
-  groceryListPage: theme.spreadThis.groceryListPage,
+  maintenanceListPage: theme.spreadThis.maintenanceListPage,
   grid: theme.spreadThis.grid,
   gridItem: theme.spreadThis.gridItem,
 }));
 
-export default function GroceryList() {
+export default function MaintenanceList() {
   const classes = useStyles();
   return (
     <>
-      <div className={classes.groceryListPage}>
+      <div className={classes.maintenanceListPage}>
         <Grid
           container
           direction='column'
@@ -25,10 +24,10 @@ export default function GroceryList() {
           className={classes.grid}
         >
           <Grid item className={classes.gridItem}>
-            <AddData />
+            <p>Form to add data</p>
           </Grid>
           <Grid item className={classes.gridItem}>
-            <Table />
+            <DataTable />
           </Grid>
         </Grid>
       </div>

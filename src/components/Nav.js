@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -16,6 +18,10 @@ import Home from '@material-ui/icons/Home';
 import Drawer from './Drawer';
 import HideOnScroll from './HideOnScroll';
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserData } from '../redux/actions/userActions';
+
 const useStyles = makeStyles((theme) => ({
   navDisplayFlex: {
     display: 'flex',
@@ -30,12 +36,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.user);
+  useEffect(() => {
+    dispatch(getUserData());
+  }, []);
+
   const navLinks = [
+    { title: 'Home', path: '/' },
+    {
+      title: 'Login',
+      path: '/login',
+    },
+  ];
+
+  const authLinks = [
     { title: 'Home', path: '/' },
     {
       title: 'Grocery List',
       path: '/grocery-list',
     },
+    { title: 'Account', path: '/account' },
   ];
 
   return (
@@ -60,17 +81,33 @@ export default function Nav() {
                   aria-labelledby='main navigation'
                   className={classes.navDisplayFlex}
                 >
-                  {navLinks.map(({ title, path }) => (
-                    <Link to={path} key={title} className={classes.linkText}>
-                      <ListItem button>
-                        <ListItemText primary={title} />
-                      </ListItem>
-                    </Link>
-                  ))}
+                  {data.authenticated
+                    ? authLinks.map(({ title, path }) => (
+                        <Link
+                          to={path}
+                          key={title}
+                          className={classes.linkText}
+                        >
+                          <ListItem button>
+                            <ListItemText primary={title} />
+                          </ListItem>
+                        </Link>
+                      ))
+                    : navLinks.map(({ title, path }) => (
+                        <Link
+                          to={path}
+                          key={title}
+                          className={classes.linkText}
+                        >
+                          <ListItem button>
+                            <ListItemText primary={title} />
+                          </ListItem>
+                        </Link>
+                      ))}
                 </List>
               </Hidden>
               <Hidden mdUp>
-                <Drawer navLinks={navLinks} />
+                <Drawer navLinks={data.authenticated ? authLinks : navLinks} />
               </Hidden>
             </Container>
           </Toolbar>

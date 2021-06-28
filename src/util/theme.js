@@ -21,9 +21,26 @@ export default {
   },
   spreadThis: {
     homePage: {
+      paddingTop: '80px',
       minHeight: '100vh',
     },
     groceryListPage: {
+      paddingTop: '80px',
+      minHeight: '100vh',
+    },
+    maintenanceListPage: {
+      paddingTop: '80px',
+      minHeight: '100vh',
+    },
+    registerPage: {
+      padding: '80px',
+      minHeight: '100vh',
+    },
+    loginPage: {
+      padding: '80px',
+      minHeight: '100vh',
+    },
+    accountPage: {
       minHeight: '100vh',
     },
     footer: {
@@ -36,6 +53,15 @@ export default {
     },
     copyright: {
       backgroundColor: '#ddd',
+    },
+    form: {
+      textAlign: 'center',
+    },
+    textField: {
+      margin: '10px auto 10px auto',
+    },
+    gridItem: {
+      marginTop: '10px',
     },
     button: {
       marginTop: 20,
@@ -50,6 +76,7 @@ export default {
     },
     progress: {
       position: 'absolute',
+      color: '#3e5879',
     },
   },
 };
