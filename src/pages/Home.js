@@ -1,5 +1,6 @@
 // Components
 import Footer from '../components/Footer';
+import AddSchedule from '../components/AddSchedule';
 
 // MUI
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,6 +32,9 @@ export default function Home() {
               To create an account, click 'Login' in the navigation bar, then
               follow the link to sign up
             </Typography>
+          </Grid>
+          <Grid item>
+            <AddSchedule />
           </Grid>
         </Grid>
       </div>

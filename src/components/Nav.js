@@ -56,6 +56,10 @@ export default function Nav() {
       title: 'Grocery List',
       path: '/grocery-list',
     },
+    {
+      title: 'Maintenance List',
+      path: '/maintenance-list',
+    },
     { title: 'Account', path: '/account' },
   ];
 
