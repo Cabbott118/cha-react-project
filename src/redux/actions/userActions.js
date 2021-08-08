@@ -17,7 +17,7 @@ export const loginUser = (userData, history) => (dispatch) => {
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push('/grocery-list');
+      history.push('/');
     })
     .catch((err) => {
       dispatch({
@@ -35,7 +35,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
       setAuthorizationHeader(res.data.token);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
-      history.push('/grocery-list');
+      history.push('/');
     })
     .catch((err) => {
       dispatch({
@@ -68,7 +68,7 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem('FBIdToken');
   delete axios.defaults.headers.common['Authorization'];
   dispatch({ type: SET_UNAUTHENTICATED });
-  window.location.replace('/');
+  window.location.replace('/login');
 };
 
 export const uploadImage = (formData) => (dispatch) => {

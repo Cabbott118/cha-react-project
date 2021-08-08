@@ -43,11 +43,14 @@ export default function Nav() {
   }, []);
 
   const navLinks = [
-    { title: 'Home', path: '/' },
     {
       title: 'Login',
       path: '/login',
     },
+    {
+      title: 'Sign Up',
+      path: '/signup'
+    }
   ];
 
   const authLinks = [
